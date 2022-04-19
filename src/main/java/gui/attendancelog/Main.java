@@ -21,7 +21,7 @@ public class Main extends Application {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Courses.connectToDB();
-
+        Courses.createDB();
         launch();
     }
 }
