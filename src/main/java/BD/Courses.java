@@ -17,4 +17,16 @@ public class Courses {
         System.out.println("База Подключена!");
 
     }
+    public static void createDB() throws ClassNotFoundException, SQLException
+    {
+        stat = conn.createStatement();
+
+
+        stat.execute("CREATE TABLE if not exists Courses ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'course' text);");
+
+        System.out.println("Таблица создана");
+    }
+    public static void writeDB(String course) throws SQLException, ClassNotFoundException{
+        stat.execute("INSERT INTO Courses(course) VALUES("+course+")");
+    }
 }

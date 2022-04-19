@@ -1,6 +1,10 @@
 package gui.attendancelog;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import BD.Courses;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -30,14 +34,18 @@ public class SetBDCourseController {
     private TextArea textShowBD;
 
     @FXML
-    void initialize() {
-        assert buttonADDInBD != null : "fx:id=\"buttonADDInBD\" was not injected: check your FXML file 'setBDCourse.fxml'.";
-        assert buttonClearBD != null : "fx:id=\"buttonClearBD\" was not injected: check your FXML file 'setBDCourse.fxml'.";
-        assert buttonGoBackPage != null : "fx:id=\"buttonGoBackPage\" was not injected: check your FXML file 'setBDCourse.fxml'.";
-        assert textFieldADDInBD != null : "fx:id=\"textFieldADDInBD\" was not injected: check your FXML file 'setBDCourse.fxml'.";
-        assert textShowBD != null : "fx:id=\"textShowBD\" was not injected: check your FXML file 'setBDCourse.fxml'.";
+    void initialize(){
+
+            buttonADDInBD.setOnAction(actionEvent -> {
+                try {
+                    Courses.writeDB(textFieldADDInBD.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
+
 
     }
-
 }
 
