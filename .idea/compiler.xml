@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="attendanceLog" target="18" />
+      <module name="BD" target="18" />
     </bytecodeTargetLevel>
   </component>
 </project>
