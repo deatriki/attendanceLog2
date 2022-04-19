@@ -1,10 +1,8 @@
 package gui.attendancelog;
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import BD.Courses;
+import BD.Facult;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -38,7 +36,7 @@ public class SetBDCourseController {
 
             buttonADDInBD.setOnAction(actionEvent -> {
                 try {
-                    Courses.writeDB(textFieldADDInBD.getText());
+                    Facult.writeDB(textFieldADDInBD.getText());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -3,20 +3,19 @@ package gui.attendancelog;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import BD.Courses;
+import BD.Course;
+import BD.Facult;
 
+import BD.Speciality;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.util.List;
 import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
 
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ComboBox;
 
 
 public class MainWindowController {
-
 
     @FXML
     private ResourceBundle resources;
@@ -25,29 +24,37 @@ public class MainWindowController {
     private URL location;
 
     @FXML
-    private Button ButtonChooseCourse;
+    private Button ButtonShowTable;
 
     @FXML
     private Button button1;
 
-
     @FXML
     private ComboBox<String> comboBox;
 
+    @FXML
+    private ComboBox<String> comboBoxCourse;
 
+    @FXML
+    private ComboBox<String> comboBoxGroup;
+
+    @FXML
+    private ComboBox<String> comboBoxLesson;
 
     @FXML
     void initialize() {
-        comboBox.getItems().addAll(Courses.outputDB("Courses"));
-        ButtonChooseCourse.setOnAction(actionEvent -> {
+        comboBox.getItems().addAll(Facult.outputDB("Facult"));
+        comboBoxCourse.getItems().addAll(Course.outputDB("Course"));
 
-            if(comboBox.getValue() != null){
-                List<String> list = Courses.outputDB("Courses");
+        if(comboBox.getValue() == "") {
+            System.out.println("sss");
+            comboBoxGroup.getItems().addAll(Speciality.outputDB("Speciality", Facult.indexDB("Facult", comboBox.getValue()), comboBoxCourse.getValue()));
+
+            List<String> list = Facult.outputDB("Facult");
 //                System.out.println(comboBox.getValue());
 
+        }
 
-            }
-        });
 
 
 

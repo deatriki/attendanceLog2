@@ -7,14 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Speciality{
+public class Course {
     public static PreparedStatement stat;
     private static ResultSet rs;
     public static void createDB() throws ClassNotFoundException, SQLException
     {
 
 
-        String sql =  "CREATE TABLE if not exists Speciality ('facult_id' INT, course_id INT, 'group' text);";
+        String sql =  "CREATE TABLE if not exists Course ('course' INT);";
 
         stat = null;
         try {
@@ -26,16 +26,14 @@ public class Speciality{
             e.printStackTrace();
         }
     }
-    public static void writeDB(String facult_id,String course_id, String group) throws SQLException, ClassNotFoundException{
-        System.out.println(facult_id + " " + course_id +  " "  + group);
-        String sql = "INSERT INTO Speciality(facult_id, course_id, 'group') VALUES(?, ?, ?)";
+    public static void writeDB(String course) throws SQLException, ClassNotFoundException{
+        System.out.println(course);
+        String sql = "INSERT INTO Course(course) VALUES(?)";
 
         stat = null;
         try{
             stat = Facult.conn.prepareStatement(sql);
-            stat.setString(1, facult_id);
-            stat.setString(2, course_id);
-            stat.setString(3, group);
+            stat.setString(1, course);
             stat.execute();
         }
         catch (SQLException e){
@@ -43,9 +41,8 @@ public class Speciality{
         }
     }
 
-    static ObservableList<String> list;
-    public static ObservableList<String> outputDB(String name, String facult_id, String course_id) {
-        String sql = "select * from " + name + " where facult_id= "+facult_id+" and course_id="+ course_id;
+    public static ObservableList<String> outputDB(String name) {
+        String sql = "select * from " + name;
         stat = null;
         ObservableList<String> list = FXCollections.observableArrayList();
 
@@ -53,9 +50,7 @@ public class Speciality{
             stat = Facult.conn.prepareStatement(sql);
             rs = stat.executeQuery();
             while (rs.next()) {
-//                list.add(rs.getString(1));
-//                list.add(rs.getString(2));
-                list.add(rs.getString(3));
+                list.add(rs.getString(1));
             }
         }
         catch (SQLException e){e.printStackTrace();}
@@ -64,7 +59,4 @@ public class Speciality{
 
     }
 
-//    public static ObservableList<String> outputDB(){
-//        return list;
-//    }
 }

@@ -4,9 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.util.List;
 
-public class Courses {
+public class Facult {
     public static Connection conn;
     public static PreparedStatement stat;
     private static ResultSet rs;
@@ -31,7 +30,7 @@ public class Courses {
     {
 
 
-        String sql =  "CREATE TABLE if not exists Courses ('courses_id' INTEGER PRIMARY KEY AUTOINCREMENT, 'course' text);";
+        String sql =  "CREATE TABLE if not exists Facult ('Facult_id' INTEGER PRIMARY KEY AUTOINCREMENT, 'facult' text);";
 
         stat = null;
         try {
@@ -43,14 +42,14 @@ public class Courses {
             e.printStackTrace();
         }
     }
-    public static void writeDB(String course) throws SQLException, ClassNotFoundException{
-        System.out.println(course);
-        String sql = "INSERT INTO Courses(course) VALUES(?)";
+    public static void writeDB(String facult) throws SQLException, ClassNotFoundException{
+        System.out.println(facult);
+        String sql = "INSERT INTO Facult (facult) VALUES(?)";
 
         stat = null;
         try{
             stat = conn.prepareStatement(sql);
-            stat.setString(1, course);
+            stat.setString(1, facult);
             stat.execute();
         }
         catch (SQLException e){
@@ -90,7 +89,7 @@ public class Courses {
         return list;
 
     }
-    public static int indexDB(String name, String word){
+    public static String indexDB(String name, String word){
         int i = -1;
         String sql = "select * from " + name;
         stat = null;
@@ -104,7 +103,7 @@ public class Courses {
             }
         }
         catch (SQLException e){e.printStackTrace();}
-        return i;
+        return Integer.toString(i);
     }
 
 
