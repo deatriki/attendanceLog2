@@ -1,11 +1,24 @@
 package BD;
 
+import gui.attendancelog.MainWindowController;
+
 import java.sql.SQLException;
 
 public class MainBD {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Courses.connectToDB();
         Courses.createDB();
+
+
+        //вывод бд
+//        Courses.writeDB("Courses");
+
+//        MainWindowController.SplitMenuButtonInPut();
+
+
+
+
+
         //КАФЕДРЫ
 //        Courses.writeDB("Кафедра Англійської мови");
 //        Courses.writeDB("Кафедра Безпеки життєдіяльності та фізичного виховання");

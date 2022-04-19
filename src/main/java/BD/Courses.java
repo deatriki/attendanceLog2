@@ -1,10 +1,15 @@
 package BD;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
+import java.util.List;
 
 public class Courses {
     public static Connection conn;
     public static PreparedStatement stat;
+    private static ResultSet rs;
     public static void connectToDB() throws ClassNotFoundException, SQLException
     {
         conn = null;
@@ -26,13 +31,13 @@ public class Courses {
     {
 
 
-        String sql =  "CREATE TABLE if not exists Courses ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'course' text);";
+        String sql =  "CREATE TABLE if not exists Courses ('courses_id' INTEGER PRIMARY KEY AUTOINCREMENT, 'course' text);";
 
         stat = null;
         try {
             stat = conn.prepareStatement(sql);
             stat.execute();
-            System.out.println("Tablet created");
+            System.out.println("Table created");
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -65,4 +70,42 @@ public class Courses {
             e.printStackTrace();
         }
     }
+
+
+    static ObservableList<String> list;
+    public static ObservableList<String> outputDB(String name) {
+        String sql = "select * from " + name;
+        stat = null;
+        ObservableList<String> list = FXCollections.observableArrayList();
+
+        try {
+            stat = conn.prepareStatement(sql);
+            rs = stat.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getString(2));
+            }
+        }
+        catch (SQLException e){e.printStackTrace();}
+        System.out.println(list);
+        return list;
+
+    }
+    public static int indexDB(String name, String word){
+        int i = -1;
+        String sql = "select * from " + name;
+        stat = null;
+        try {
+            stat = conn.prepareStatement(sql);
+            rs = stat.executeQuery();
+            while (rs.next()) {
+                if(rs.getString(2).equals(word)){
+                    i = rs.getInt(1);
+                }
+            }
+        }
+        catch (SQLException e){e.printStackTrace();}
+        return i;
+    }
+
+
 }

@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import BD.Courses;
 
 import javafx.fxml.FXML;
-
+import java.util.List;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
@@ -39,7 +39,15 @@ public class MainWindowController {
     @FXML
     void initialize() {
         comboBox.getItems().addAll(Courses.outputDB("Courses"));
+        ButtonChooseCourse.setOnAction(actionEvent -> {
 
+            if(comboBox.getValue() != null){
+                List<String> list = Courses.outputDB("Courses");
+//                System.out.println(comboBox.getValue());
+
+
+            }
+        });
 
 
 
