@@ -52,4 +52,17 @@ public class Courses {
             e.printStackTrace();
         }
     }
+
+    public static void clear(String name) {
+        String sql = "DROP TABLE " + name;
+        stat = null;
+        try{
+            stat = conn.prepareStatement(sql);
+            stat.executeUpdate();
+            System.out.println("cleared");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
