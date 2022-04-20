@@ -106,5 +106,15 @@ public class Facult {
         return Integer.toString(i);
     }
 
+    public static void clearBDWhere(String facult_id){
+        String sql = "delete from Facult where Facult_id=" + facult_id;
+        stat = null;
+        try {
+            stat = Facult.conn.prepareStatement(sql);
+            stat.executeUpdate();
+        }
+        catch (SQLException e){e.printStackTrace();}
+    }
+
 
 }

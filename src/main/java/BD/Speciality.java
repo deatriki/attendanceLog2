@@ -43,7 +43,7 @@ public class Speciality{
         }
     }
 
-    static ObservableList<String> list;
+
     public static ObservableList<String> outputDB(String name, String facult_id, String course_id) {
         String sql = "select * from " + name + " where facult_id= "+facult_id+" and course_id="+ course_id;
         stat = null;
@@ -64,7 +64,12 @@ public class Speciality{
 
     }
 
-//    public static ObservableList<String> outputDB(){
-//        return list;
-//    }
+    public static void clearBDWhere(String facult_id, String course_id){
+        String sql = "delete from Speciality where facult_id=" + facult_id +" and course_id="+ course_id;
+        try {
+            stat = Facult.conn.prepareStatement(sql);
+            stat.executeUpdate();
+        }
+        catch (SQLException e){e.printStackTrace();}
+    }
 }

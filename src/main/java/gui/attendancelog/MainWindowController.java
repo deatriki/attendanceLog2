@@ -7,10 +7,13 @@ import BD.Course;
 import BD.Facult;
 
 import BD.Speciality;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.util.List;
 import javafx.scene.control.Button;
+import java.util.ArrayList;
 
 import javafx.scene.control.ComboBox;
 
@@ -45,15 +48,19 @@ public class MainWindowController {
     void initialize() {
         comboBox.getItems().addAll(Facult.outputDB("Facult"));
         comboBoxCourse.getItems().addAll(Course.outputDB("Course"));
+        comboBox.setOnAction(actionEvent -> {
+            ObservableList<String> i = FXCollections.observableArrayList();
+            comboBoxGroup.setItems(i);
 
-        if(comboBox.getValue() == "") {
-            System.out.println("sss");
+            comboBoxGroup.getItems().addAll(Speciality.outputDB("Speciality", Facult.indexDB("Facult", comboBox.getValue()), comboBoxCourse.getValue()));
+        } );
+        comboBoxCourse.setOnAction(actionEvent -> {
+            ObservableList<String> i = FXCollections.observableArrayList();
+            comboBoxGroup.setItems(i);
+
             comboBoxGroup.getItems().addAll(Speciality.outputDB("Speciality", Facult.indexDB("Facult", comboBox.getValue()), comboBoxCourse.getValue()));
 
-            List<String> list = Facult.outputDB("Facult");
-//                System.out.println(comboBox.getValue());
-
-        }
+        });
 
 
 
