@@ -1,6 +1,7 @@
 package gui.attendancelog;
 
 import BD.Facult;
+import BD.Lessons;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,6 +26,7 @@ public class Main extends Application {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Facult.connectToDB();
         Facult.createDB();
+        Lessons.createDB();
 
 
         launch();

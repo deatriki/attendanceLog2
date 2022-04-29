@@ -14,7 +14,7 @@ public class Speciality{
     {
 
 
-        String sql =  "CREATE TABLE if not exists Speciality ('facult_id' INT, course_id INT, 'group' text);";
+        String sql =  "CREATE TABLE if not exists Speciality('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'facult_id' INT, course_id INT, 'group' text, 'group_num' INT);";
 
         stat = null;
         try {
@@ -26,9 +26,9 @@ public class Speciality{
             e.printStackTrace();
         }
     }
-    public static void writeDB(String facult_id,String course_id, String group) throws SQLException, ClassNotFoundException{
-        System.out.println(facult_id + " " + course_id +  " "  + group);
-        String sql = "INSERT INTO Speciality(facult_id, course_id, 'group') VALUES(?, ?, ?)";
+    public static void writeDB(String facult_id,String course_id, String group, String group_id) throws SQLException, ClassNotFoundException{
+        System.out.println(facult_id + " " + course_id +  " "  + group + " " + group_id);
+        String sql = "INSERT INTO Speciality(facult_id, course_id, 'group', 'group_id') VALUES(?, ?, ?, ?)";
 
         stat = null;
         try{
@@ -36,6 +36,7 @@ public class Speciality{
             stat.setString(1, facult_id);
             stat.setString(2, course_id);
             stat.setString(3, group);
+            stat.setString(4, group_id);
             stat.execute();
         }
         catch (SQLException e){
@@ -48,14 +49,15 @@ public class Speciality{
         String sql = "select * from " + name + " where facult_id= "+facult_id+" and course_id="+ course_id;
         stat = null;
         ObservableList<String> list = FXCollections.observableArrayList();
-
         try {
             stat = Facult.conn.prepareStatement(sql);
             rs = stat.executeQuery();
             while (rs.next()) {
 //                list.add(rs.getString(1));
 //                list.add(rs.getString(2));
-                list.add(rs.getString(3));
+                list.add(rs.getString(4) + "-" + rs.getString(5));
+
+
             }
         }
         catch (SQLException e){e.printStackTrace();}
@@ -64,12 +66,23 @@ public class Speciality{
 
     }
 
-    public static void clearBDWhere(String facult_id, String course_id){
-        String sql = "delete from Speciality where facult_id=" + facult_id +" and course_id="+ course_id;
+    public static String outputID(String[] groupAndId){
+        String group = groupAndId[0];
+        String group_num = groupAndId[1];
+        String sql = "Select ID from Speciality where 'group'='"+ group + "' and group_num=" + group_num;
+        stat = null;
+        String ID = "";
         try {
             stat = Facult.conn.prepareStatement(sql);
-            stat.executeUpdate();
+            rs = stat.executeQuery();
+            while (rs.next()) {
+                ID += rs.getString(1);
+            }
         }
         catch (SQLException e){e.printStackTrace();}
+        System.out.println(ID);
+        return ID;
     }
+
+
 }

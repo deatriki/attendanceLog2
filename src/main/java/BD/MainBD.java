@@ -6,13 +6,15 @@ public class MainBD {
         Facult.createDB();
         Course.createDB();
         Speciality.createDB();
+        Lessons.createDB();
         Facult.outputDB("Facult");
 //        Speciality.writeDB("","","");
 //        Facult.clearBDWhere("5");
 
-
-
-
+//        Lessons.writeDB("БДС-11", "Инглиш");
+//        Lessons.outputDB("БДС-11");
+//        Facult.clear("Speciality");
+//        Facult.clear("Lesson");
 
 
 
@@ -22,7 +24,7 @@ public class MainBD {
 //        Speciality.clearBDWhere("4", "1");
 
 
-        Speciality.outputDB("Speciality","4","5");
+//        Speciality.outputDB("Speciality","4","5");
 
 //        Speciality.writeDB("4","5","СТДМ-51");
 //        Speciality.writeDB("4","5","УІДМ-51");

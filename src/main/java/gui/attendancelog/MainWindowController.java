@@ -6,16 +6,20 @@ import java.util.ResourceBundle;
 import BD.Course;
 import BD.Facult;
 
+import BD.Lessons;
 import BD.Speciality;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import java.util.List;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import java.util.ArrayList;
 
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
+
+import static javafx.fxml.FXMLLoader.load;
 
 
 public class MainWindowController {
@@ -28,6 +32,9 @@ public class MainWindowController {
 
     @FXML
     private Button ButtonShowTable;
+
+    @FXML
+    private Button buttonEdLes;
 
     @FXML
     private Button button1;
@@ -61,7 +68,23 @@ public class MainWindowController {
             comboBoxGroup.getItems().addAll(Speciality.outputDB("Speciality", Facult.indexDB("Facult", comboBox.getValue()), comboBoxCourse.getValue()));
 
         });
+        comboBoxGroup.setOnAction(actionEvent -> {
+            ObservableList<String> i = FXCollections.observableArrayList();
+            comboBoxLesson.setItems(i);
+            String[] groupAndId = new String[2];
+            comboBoxLesson.getItems().addAll(Lessons.outputDB(Speciality.outputID(groupAndId = comboBoxGroup.getValue().split("-"))));
 
+        });
+        buttonEdLes.setOnAction(actionEvent -> {
+            try{
+                Parent edLesWin = FXMLLoader.load(getClass().getResource("setDBLes.fxml"));
+                Stage edLesStage = new Stage();
+                edLesStage.setTitle("редактор предметов");
+                edLesStage.setScene(new Scene(edLesWin, 700, 400));
+                edLesStage.show();
+            }
+            catch (Exception e){e.printStackTrace();}
+        });
 
 
 
@@ -69,7 +92,7 @@ public class MainWindowController {
 
 //        button1.setOnAction(actionEvent -> {
 //            try{
-//                Parent secondWindow = FXMLLoader.load(getClass().getResource("setBDCourse.fxml"));
+//                Parent secondWindow = FXMLLoader.load(getClass().getResource("setDBLes.fxml"));
 //                Stage secondStage = new Stage();
 //                secondStage.setTitle("BD");
 //                secondStage.setScene(new Scene(secondWindow, 700, 400));
