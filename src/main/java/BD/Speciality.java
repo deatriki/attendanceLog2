@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Speciality{
     public static PreparedStatement stat;
@@ -69,14 +70,17 @@ public class Speciality{
     public static String outputID(String[] groupAndId){
         String group = groupAndId[0];
         String group_num = groupAndId[1];
-        String sql = "Select ID from Speciality where 'group'='"+ group + "' and group_num=" + group_num;
+        System.out.println(group + "   " + group_num);
+        String sql = "Select * from Speciality where [group]='"+ group + "' and group_num=" + group_num;
         stat = null;
+        rs = null;
+
         String ID = "";
         try {
             stat = Facult.conn.prepareStatement(sql);
             rs = stat.executeQuery();
             while (rs.next()) {
-                ID += rs.getString(1);
+                ID = rs.getString(1);
             }
         }
         catch (SQLException e){e.printStackTrace();}

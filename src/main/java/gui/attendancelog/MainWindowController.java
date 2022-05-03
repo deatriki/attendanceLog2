@@ -1,13 +1,11 @@
 package gui.attendancelog;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
-import BD.Course;
-import BD.Facult;
+import BD.*;
 
-import BD.Lessons;
-import BD.Speciality;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -35,9 +33,6 @@ public class MainWindowController {
 
     @FXML
     private Button buttonEdLes;
-
-    @FXML
-    private Button button1;
 
     @FXML
     private ComboBox<String> comboBox;
@@ -72,7 +67,7 @@ public class MainWindowController {
             ObservableList<String> i = FXCollections.observableArrayList();
             comboBoxLesson.setItems(i);
             String[] groupAndId = new String[2];
-            comboBoxLesson.getItems().addAll(Lessons.outputDB(Speciality.outputID(groupAndId = comboBoxGroup.getValue().split("-"))));
+            comboBoxLesson.getItems().addAll(Lessons.outputDB(Speciality.outputID(comboBoxGroup.getValue().split("-"))));
 
         });
         buttonEdLes.setOnAction(actionEvent -> {
@@ -86,7 +81,32 @@ public class MainWindowController {
             catch (Exception e){e.printStackTrace();}
         });
 
+        ButtonShowTable.setOnAction(actionEvent -> {
 
+            if(comboBoxLesson.getValue() != null){
+
+
+                List<String> list = Students.outputBD(Speciality.outputID(comboBoxGroup.getValue().split("-")));
+                List<String> list2 = Attendance.outputDB(Speciality.outputID(comboBoxGroup.getValue().split("-")), comboBoxLesson.getValue());
+                String temp1;
+                String temp2;
+                for(int i=0;i < list2.size(); i++){
+                    temp1 = list.get(i);
+                    temp2 = list2.get(i);
+                    AttendanceController.attendanceDate.add(new EndTable(temp1, temp2));
+                }
+                try{
+                    Parent secondWindow = FXMLLoader.load(getClass().getResource("Attendance.fxml"));
+                    Stage secondStage = new Stage();
+                    secondStage.setTitle("BD");
+                    secondStage.setScene(new Scene(secondWindow, 270, 400));
+                    secondStage.show();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
 

@@ -14,7 +14,7 @@ public class MainBD {
 //        Lessons.writeDB("БДС-11", "Инглиш");
 //        Lessons.outputDB("БДС-11");
 //        Facult.clear("Speciality");
-//        Facult.clear("Lesson");
+        Facult.clear("Attendance");
 
 
 
