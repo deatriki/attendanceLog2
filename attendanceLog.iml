@@ -12,6 +12,15 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="io.github.willena.sqlite.jdbc" level="project" />
     <orderEntry type="library" name="sqlite-jdbc-3.36.0.3" level="project" />
+    <orderEntry type="library" name="Maven: app.cash.sqldelight:sqlite-driver:2.0.0-alpha02" level="project" />
+    <orderEntry type="library" name="Maven: app.cash.sqldelight:jdbc-driver:2.0.0-alpha02" level="project" />
+    <orderEntry type="library" name="Maven: app.cash.sqldelight:runtime-jvm:2.0.0-alpha02" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.20" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.20" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.6.20" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.20" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xerial:sqlite-jdbc:3.36.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:18-ea+6" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:18-ea+6" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:18-ea+6" level="project" />

@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 
 public class AttendanceController {
 
-    public static ObservableList<EndTable> attendanceDate = FXCollections.observableArrayList();
+    public static ObservableList<EndTable> attendanceDate = FXCollections.observableArrayList(new EndTable("Kirril Good", "-"));
 
     @FXML
     private ResourceBundle resources;
