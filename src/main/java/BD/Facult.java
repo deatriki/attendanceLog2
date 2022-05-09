@@ -71,7 +71,7 @@ public class Facult {
     }
 
 
-    static ObservableList<String> list;
+
     public static ObservableList<String> outputDB(String name) {
         String sql = "select * from " + name;
         stat = null;
@@ -106,8 +106,8 @@ public class Facult {
         return Integer.toString(i);
     }
 
-    public static void clearBDWhere(String facult_id){
-        String sql = "delete from Facult where Facult_id=" + facult_id;
+    public static void updateBDWhere(String facult, String set){
+        String sql = "update facult set [facult]='"+ set + "' where [facult]='" + facult +"'";
         stat = null;
         try {
             stat = Facult.conn.prepareStatement(sql);

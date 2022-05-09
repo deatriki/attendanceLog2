@@ -6,9 +6,9 @@
 
 <AnchorPane prefHeight="340.0" prefWidth="520.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.attendancelog.MainWindowController">
     <children>
-      <ComboBox fx:id="comboBox" layoutY="21.0" prefHeight="25.0" prefWidth="332.0" promptText="выберите факультет" />
-      <Button fx:id="ButtonShowTable" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="next" />
+      <ComboBox fx:id="comboBoxFacult" layoutY="21.0" prefHeight="25.0" prefWidth="332.0" promptText="выберите факультет" />
+      <Button fx:id="ButtonNext" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="next" />
       <ComboBox fx:id="comboBoxCourse" layoutX="332.0" layoutY="21.0" prefHeight="25.0" prefWidth="101.0" promptText="Курс" />
-      <Button fx:id="buttonEdLes" layoutX="440.0" layoutY="312.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="87.0" text="настройки" />
+      <Button fx:id="buttonSettings" layoutX="419.0" layoutY="294.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="87.0" text="настройки" />
     </children>
 </AnchorPane>

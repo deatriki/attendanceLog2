@@ -2,9 +2,19 @@ package gui.attendancelog;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 public class MainWindowController {
 
@@ -15,19 +25,36 @@ public class MainWindowController {
     private URL location;
 
     @FXML
-    private Button ButtonShowTable;
+    private Button ButtonNext;
 
     @FXML
-    private Button buttonEdLes;
-
-    @FXML
-    private ComboBox<?> comboBox;
+    private Button buttonSettings;
 
     @FXML
     private ComboBox<?> comboBoxCourse;
 
     @FXML
+    private ComboBox<?> comboBoxFacult;
+
+    @FXML
     void initialize() {
+        buttonSettings.setOnAction(actionEvent -> {
+            try{
+
+                Parent secondWindow = FXMLLoader.load(getClass().getResource("settingsFacultCourses.fxml"));
+                Stage secondStage = new Stage();
+                Scene secondScene = new Scene(secondWindow, 520, 340);
+
+                secondStage.setTitle("BD");
+                secondStage.setScene(secondScene);
+                secondStage.initModality(Modality.WINDOW_MODAL);
+                secondStage.initOwner(Window.getWindows().get(0));
+                secondStage.show();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+        });
 
     }
 
