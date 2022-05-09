@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="342.0" prefWidth="527.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.attendancelog.MainWindowController">
+<AnchorPane prefHeight="340.0" prefWidth="520.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.attendancelog.MainWindowController">
     <children>
       <ComboBox fx:id="comboBox" layoutY="21.0" prefHeight="25.0" prefWidth="332.0" promptText="выберите факультет" />
       <Button fx:id="ButtonShowTable" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="next" />
