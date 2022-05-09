@@ -28,6 +28,7 @@ public class AttendanceController {
     @FXML
     private TableView<EndTable> table;
 
+
     @FXML
     void initialize() {
         table.setItems(attendanceDate);

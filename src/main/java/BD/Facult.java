@@ -26,11 +26,11 @@ public class Facult {
 
 
     }
-    public static void createDB() throws ClassNotFoundException, SQLException
+    public static void createDB()
     {
 
 
-        String sql =  "CREATE TABLE if not exists Facult ('Facult_id' INTEGER PRIMARY KEY AUTOINCREMENT, 'facult' text);";
+        String sql =  "CREATE TABLE if not exists facult ('facult_id' INTEGER PRIMARY KEY AUTOINCREMENT, 'facult' text);";
 
         stat = null;
         try {
@@ -44,7 +44,7 @@ public class Facult {
     }
     public static void writeDB(String facult) throws SQLException, ClassNotFoundException{
         System.out.println(facult);
-        String sql = "INSERT INTO Facult (facult) VALUES(?)";
+        String sql = "INSERT INTO facult (facult) VALUES(?)";
 
         stat = null;
         try{

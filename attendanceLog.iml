@@ -11,7 +11,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="io.github.willena.sqlite.jdbc" level="project" />
-    <orderEntry type="library" name="sqlite-jdbc-3.36.0.3" level="project" />
     <orderEntry type="library" name="Maven: app.cash.sqldelight:sqlite-driver:2.0.0-alpha02" level="project" />
     <orderEntry type="library" name="Maven: app.cash.sqldelight:jdbc-driver:2.0.0-alpha02" level="project" />
     <orderEntry type="library" name="Maven: app.cash.sqldelight:runtime-jvm:2.0.0-alpha02" level="project" />

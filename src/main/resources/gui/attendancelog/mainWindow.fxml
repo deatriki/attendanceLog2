@@ -3,19 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.attendancelog.MainWindowController">
+<AnchorPane prefHeight="342.0" prefWidth="527.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.attendancelog.MainWindowController">
     <children>
       <ComboBox fx:id="comboBox" layoutY="21.0" prefHeight="25.0" prefWidth="332.0" promptText="выберите факультет" />
-      <ComboBox fx:id="comboBoxGroup" layoutX="433.0" layoutY="21.0" prefHeight="25.0" prefWidth="137.0" promptText="выберите группу" />
-      <ComboBox fx:id="comboBoxLesson" layoutY="52.0" prefHeight="25.0" prefWidth="332.0" promptText="выберите предмет" />
-      <Button fx:id="ButtonShowTable" layoutY="83.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="332.0" text="show table">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <Button fx:id="ButtonShowTable" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="next" />
       <ComboBox fx:id="comboBoxCourse" layoutX="332.0" layoutY="21.0" prefHeight="25.0" prefWidth="101.0" promptText="Курс" />
-      <Button fx:id="buttonEdLes" layoutX="580.0" layoutY="351.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="120.0" text="добавить предметы" />
+      <Button fx:id="buttonEdLes" layoutX="440.0" layoutY="312.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="87.0" text="настройки" />
     </children>
 </AnchorPane>

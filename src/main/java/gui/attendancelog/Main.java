@@ -1,9 +1,6 @@
 package gui.attendancelog;
 
-import BD.Attendance;
-import BD.Facult;
-import BD.Lessons;
-import BD.Students;
+import BD.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,7 +26,9 @@ public class Main extends Application {
         Facult.connectToDB();
         Facult.createDB();
         Lessons.createDB();
+        Course.createDB();
         Students.createDB();
+        Speciality.createDB();
         Attendance.createDB();
 
         launch();
