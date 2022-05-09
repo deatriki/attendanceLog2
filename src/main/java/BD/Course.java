@@ -14,7 +14,7 @@ public class Course {
     {
 
 
-        String sql =  "CREATE TABLE if not exists Course ('course' INT);";
+        String sql =  "CREATE TABLE if not exists course('course' INT);";
 
         stat = null;
         try {
@@ -28,13 +28,15 @@ public class Course {
     }
     public static void writeDB(String course) throws SQLException, ClassNotFoundException{
         System.out.println(course);
-        String sql = "INSERT INTO Course(course) VALUES(?)";
+        String sql = "INSERT INTO course(course) VALUES(?)";
 
         stat = null;
         try{
-            stat = Facult.conn.prepareStatement(sql);
-            stat.setString(1, course);
-            stat.execute();
+            for(int i = 1; i<Integer.parseInt(course)+1; i++) {
+                stat = Facult.conn.prepareStatement(sql);
+                stat.setString(1, Integer.toString(i));
+                stat.execute();
+            }
         }
         catch (SQLException e){
             e.printStackTrace();

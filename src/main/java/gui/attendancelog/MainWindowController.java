@@ -3,6 +3,8 @@ package gui.attendancelog;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import BD.Course;
+import BD.Facult;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,19 +27,42 @@ public class MainWindowController {
     private URL location;
 
     @FXML
-    private Button ButtonNext;
+    private Button buttonNext;
 
     @FXML
     private Button buttonSettings;
 
     @FXML
-    private ComboBox<?> comboBoxCourse;
+    private ComboBox<String> comboBoxCourse;
 
     @FXML
-    private ComboBox<?> comboBoxFacult;
+    private ComboBox<String> comboBoxFacult;
 
     @FXML
     void initialize() {
+        comboBoxFacult.getItems().addAll(Facult.outputDB("facult"));
+        comboBoxCourse.getItems().addAll(Course.outputDB("course"));
+
+        buttonNext.setOnAction(actionEvent -> {
+            if(comboBoxFacult.getValue()!= null && comboBoxCourse.getValue() != null){
+                try{
+
+                    Parent secondWindow = FXMLLoader.load(getClass().getResource("groupWindow.fxml"));
+                    Stage secondStage = new Stage();
+                    Scene secondScene = new Scene(secondWindow, 520, 340);
+
+                    secondStage.setTitle("выберите группу");
+                    secondStage.setScene(secondScene);
+                    secondStage.initModality(Modality.WINDOW_MODAL);
+                    secondStage.initOwner(Window.getWindows().get(0));
+                    secondStage.show();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
         buttonSettings.setOnAction(actionEvent -> {
             try{
 
@@ -45,7 +70,7 @@ public class MainWindowController {
                 Stage secondStage = new Stage();
                 Scene secondScene = new Scene(secondWindow, 520, 340);
 
-                secondStage.setTitle("BD");
+                secondStage.setTitle("настройки факультета и курсов");
                 secondStage.setScene(secondScene);
                 secondStage.initModality(Modality.WINDOW_MODAL);
                 secondStage.initOwner(Window.getWindows().get(0));
