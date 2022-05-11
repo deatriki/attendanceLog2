@@ -16,7 +16,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(fxmlLoader.load(), 520, 340);
 
-        stage.setTitle("пошел на хуй");
+        stage.setTitle("окошко (:");
         stage.setScene(scene);
         stage.show();
     }
@@ -25,10 +25,10 @@ public class Main extends Application {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Facult.connectToDB();
         Facult.createDB();
-        Lessons.createDB();
+        Subjects.createDB();
         Course.createDB();
         Students.createDB();
-        Speciality.createDB();
+        Group.createDB();
         Attendance.createDB();
 
         launch();

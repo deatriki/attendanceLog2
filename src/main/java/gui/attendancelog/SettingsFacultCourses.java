@@ -111,6 +111,7 @@ public class SettingsFacultCourses {
             }
         });
         buttonBackPage.setOnAction(actionEvent -> {
+
             Stage stage = (Stage) buttonBackPage.getScene().getWindow();
             stage.close();
         });

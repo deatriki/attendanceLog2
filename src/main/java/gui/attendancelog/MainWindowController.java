@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import BD.Course;
 import BD.Facult;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +37,22 @@ public class MainWindowController {
     @FXML
     private ComboBox<String> comboBoxCourse;
 
+    public ComboBox<String> getComboBoxCourse() {
+        return comboBoxCourse;
+    }
+
+    public void setComboBoxCourse(ComboBox<String> comboBoxCourse) {
+        this.comboBoxCourse = comboBoxCourse;
+    }
+
+    public ComboBox<String> getComboBoxFacult() {
+        return comboBoxFacult;
+    }
+
+    public void setComboBoxFacult(ComboBox<String> comboBoxFacult) {
+        this.comboBoxFacult = comboBoxFacult;
+    }
+
     @FXML
     private ComboBox<String> comboBoxFacult;
 
@@ -45,17 +63,21 @@ public class MainWindowController {
 
         buttonNext.setOnAction(actionEvent -> {
             if(comboBoxFacult.getValue()!= null && comboBoxCourse.getValue() != null){
+                ChosenId.setCourse_id(comboBoxCourse.getValue());
+                ChosenId.setFacult_id(Facult.indexDB("facult", comboBoxFacult.getValue()));
                 try{
 
                     Parent secondWindow = FXMLLoader.load(getClass().getResource("groupWindow.fxml"));
                     Stage secondStage = new Stage();
-                    Scene secondScene = new Scene(secondWindow, 520, 340);
+                    Scene secondScene = new Scene(secondWindow, 260, 200);
 
                     secondStage.setTitle("выберите группу");
                     secondStage.setScene(secondScene);
                     secondStage.initModality(Modality.WINDOW_MODAL);
                     secondStage.initOwner(Window.getWindows().get(0));
                     secondStage.show();
+
+
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -82,6 +104,7 @@ public class MainWindowController {
         });
 
     }
+
 
 }
 

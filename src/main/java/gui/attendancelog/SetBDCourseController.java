@@ -1,18 +1,18 @@
 package gui.attendancelog;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import BD.Course;
 import BD.Facult;
-import BD.Lessons;
-import BD.Speciality;
+import BD.Group;
+import BD.Subjects;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
+
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
@@ -56,13 +56,13 @@ public class SetBDCourseController {
             ObservableList<String> i = FXCollections.observableArrayList();
             comboBoxGroup.setItems(i);
 
-            comboBoxGroup.getItems().addAll(Speciality.outputDB("Speciality", Facult.indexDB("Facult", comboBoxFacult.getValue()), comboBoxCourse.getValue()));
+            comboBoxGroup.getItems().addAll(Group.outputDB("group", Facult.indexDB("Facult", comboBoxFacult.getValue()), comboBoxCourse.getValue()));
         } );
         comboBoxCourse.setOnAction(actionEvent -> {
             ObservableList<String> i = FXCollections.observableArrayList();
             comboBoxGroup.setItems(i);
 
-            comboBoxGroup.getItems().addAll(Speciality.outputDB("Speciality", Facult.indexDB("Facult", comboBoxFacult.getValue()), comboBoxCourse.getValue()));
+            comboBoxGroup.getItems().addAll(Group.outputDB("group", Facult.indexDB("Facult", comboBoxFacult.getValue()), comboBoxCourse.getValue()));
 
         });
         comboBoxGroup.setOnAction(actionEvent ->{
@@ -77,7 +77,7 @@ public class SetBDCourseController {
         });
         buttonADDInBD.setOnAction(actionEvent -> {
             try {
-                Lessons.writeDB(comboBoxGroup.getValue(), textFieldADDInBD.getText());
+                Subjects.writeDB(comboBoxGroup.getValue(), textFieldADDInBD.getText());
 //                textShowBD.setText(Lessons.outputDB(comboBoxGroup.getValue()));
             }
             catch (Exception e) {e.printStackTrace();}

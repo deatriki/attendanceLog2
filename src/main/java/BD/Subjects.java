@@ -9,14 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lessons {
+public class Subjects {
     public static PreparedStatement stat;
     private static ResultSet rs;
-    public static void createDB() throws ClassNotFoundException, SQLException
+    public static void createDB()
     {
 
 
-        String sql =  "CREATE TABLE if not exists Lesson('group_id' INT, 'lesson' text);";
+        String sql =  "CREATE TABLE if not exists subject('group_id' INT, 'subject' text);";
 
         stat = null;
         try {
@@ -31,7 +31,7 @@ public class Lessons {
 
     public static void writeDB(String group_id, String lesson) throws SQLException, ClassNotFoundException{
         System.out.println(group_id + " " + lesson);
-        String sql = "INSERT INTO Lesson('group_id', 'lesson') VALUES(?, ?)";
+        String sql = "INSERT INTO subject('group_id', 'subject') VALUES(?, ?)";
 
         stat = null;
         try{
@@ -46,38 +46,12 @@ public class Lessons {
         }
 
 
-        sql = "select * from Lesson where 'group_id'="+group_id+"";
-
-        stat = null;
-        List<String> list = new ArrayList<>();
-
-        String o = "";
-
-        try {
-            stat = Facult.conn.prepareStatement(sql);
-            rs = stat.executeQuery();
-            while (rs.next()) {
-//                list.add(rs.getString(1));
-//                list.add(rs.getString(2));
-                list.add(rs.getString(2));
-                System.out.println(rs.getString(2));
-                System.out.println(rs.getString(1));
-            }
-
-        }
-        catch (SQLException e){e.printStackTrace();}
-        for(String i : list) {
-            o += i + "\n";
-        }
-        System.out.println(o);
-
-
     }
 
 
 
     public static ObservableList<String> outputDB(String group_id) {
-        String sql = "select * from Lesson where group_id="+group_id;
+        String sql = "select * from subject where [group_id]="+group_id;
         stat = null;
         ObservableList<String> list = FXCollections.observableArrayList();
         try {
@@ -91,5 +65,15 @@ public class Lessons {
         System.out.println(list);
         return list;
 
+    }
+
+    public static void updateDBWhere(String group_id, String subject, String set){
+        String sql = "UPDATE subject set [subject]='"+set+"' WHERE [group_id]="+group_id+" and [subject]='"+subject+"'";
+        stat = null;
+        try {
+            stat = Facult.conn.prepareStatement(sql);
+            stat.executeUpdate();
+        }
+        catch (SQLException e){e.printStackTrace();}
     }
 }

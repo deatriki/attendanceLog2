@@ -5,8 +5,8 @@ public class MainBD {
         Facult.connectToDB();
         Facult.createDB();
         Course.createDB();
-        Speciality.createDB();
-        Lessons.createDB();
+        Group.createDB();
+        Subjects.createDB();
         Facult.outputDB("Facult");
 //        Speciality.writeDB("","","");
 //        Facult.clearBDWhere("5");
