@@ -40,41 +40,62 @@ public class GroupWindow {
     void initialize() {
         boxReload();
         buttonSettings.setOnAction(actionEvent -> {
+            Stage stage = (Stage) buttonSettings.getScene().getWindow();
             try{
-                Parent secondWindow = FXMLLoader.load(getClass().getResource("settingsGroup.fxml"));
-                Stage secondStage = new Stage();
-                Scene secondScene = new Scene(secondWindow, 520, 340);
 
-                secondStage.setTitle("выберите группу");
-                secondStage.setScene(secondScene);
-                secondStage.initModality(Modality.WINDOW_MODAL);
-                secondStage.initOwner(Window.getWindows().get(1));
-                secondStage.show();
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("settingsGroup.fxml"));
+
+                Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
+
+                stage.setTitle("настройки факультета и курсов");
+                stage.setScene(secondScene);
+
+
+                stage.show();
+
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+        });
+        buttonBack.setOnAction(actionEvent -> {
+            Stage stage = (Stage) buttonBack.getScene().getWindow();
+            try{
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
+
+                Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
+
+                stage.setTitle("выберите группу");
+                stage.setScene(secondScene);
+
+
+                stage.show();
+
 
             }
             catch (Exception e){
                 e.printStackTrace();
             }
         });
-        buttonBack.setOnAction(actionEvent -> {
-            Stage stage = (Stage) buttonBack.getScene().getWindow();
-            stage.close();
-        });
         buttonNext.setOnAction(actionEvent -> {
             if(comboBox.getValue()!= null){
                 String[] groupNameAndNum = comboBox.getValue().split("-");
                 ChosenId.setGroup(ChosenId.getCourse_id()+ChosenId.getCourse_id()+groupNameAndNum[1]);
+                Stage stage = (Stage) buttonNext.getScene().getWindow();
                 try{
 
-                    Parent secondWindow = FXMLLoader.load(getClass().getResource("subject.fxml"));
-                    Stage secondStage = new Stage();
-                    Scene secondScene = new Scene(secondWindow, 260, 200);
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("subject.fxml"));
 
-                    secondStage.setTitle("выберите группу");
-                    secondStage.setScene(secondScene);
-                    secondStage.initModality(Modality.WINDOW_MODAL);
-                    secondStage.initOwner(Window.getWindows().get(1));
-                    secondStage.show();
+                    Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
+
+                    stage.setTitle("выберите группу");
+                    stage.setScene(secondScene);
+
+
+                    stage.show();
 
 
                 }

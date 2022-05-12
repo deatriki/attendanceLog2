@@ -10,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -92,7 +94,23 @@ public class SettingsSubject {
         buttonBackPage.setOnAction(actionEvent -> {
 
             Stage stage = (Stage) buttonBackPage.getScene().getWindow();
-            stage.close();
+            try{
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("subject.fxml"));
+
+                Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
+
+                stage.setTitle("выберите группу");
+                stage.setScene(secondScene);
+
+
+                stage.show();
+
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         });
     }
     void boxReload(){

@@ -65,42 +65,49 @@ public class MainWindowController {
             if(comboBoxFacult.getValue()!= null && comboBoxCourse.getValue() != null){
                 ChosenId.setCourse_id(comboBoxCourse.getValue());
                 ChosenId.setFacult_id(Facult.indexDB("facult", comboBoxFacult.getValue()));
+
+                Stage stage = (Stage) buttonNext.getScene().getWindow();
                 try{
 
-                    Parent secondWindow = FXMLLoader.load(getClass().getResource("groupWindow.fxml"));
-                    Stage secondStage = new Stage();
-                    Scene secondScene = new Scene(secondWindow, 260, 200);
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("groupWindow.fxml"));
 
-                    secondStage.setTitle("выберите группу");
-                    secondStage.setScene(secondScene);
-                    secondStage.initModality(Modality.WINDOW_MODAL);
-                    secondStage.initOwner(Window.getWindows().get(0));
-                    secondStage.show();
+                    Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
+
+                    stage.setTitle("выберите группу");
+                    stage.setScene(secondScene);
+
+
+                    stage.show();
 
 
                 }
                 catch (Exception e){
                     e.printStackTrace();
                 }
+
             }
         });
 
         buttonSettings.setOnAction(actionEvent -> {
+            Stage stage = (Stage) buttonSettings.getScene().getWindow();
             try{
 
-                Parent secondWindow = FXMLLoader.load(getClass().getResource("settingsFacultCourses.fxml"));
-                Stage secondStage = new Stage();
-                Scene secondScene = new Scene(secondWindow, 520, 340);
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("settingsFacultCourses.fxml"));
 
-                secondStage.setTitle("настройки факультета и курсов");
-                secondStage.setScene(secondScene);
-                secondStage.initModality(Modality.WINDOW_MODAL);
-                secondStage.initOwner(Window.getWindows().get(0));
-                secondStage.show();
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
+                Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
+
+                stage.setTitle("настройки факультета и курсов");
+                stage.setScene(secondScene);
+
+
+                stage.show();
+
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
         });
 
     }

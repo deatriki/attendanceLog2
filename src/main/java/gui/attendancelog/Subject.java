@@ -41,25 +41,66 @@ public class Subject {
         boxReload();
         comboBox.setItems(Subjects.outputDB(ChosenId.getGroup()));
         buttonSettings.setOnAction(actionEvent -> {
+            Stage stage = (Stage) buttonSettings.getScene().getWindow();
             try{
-                Parent secondWindow = FXMLLoader.load(getClass().getResource("settingsSubject.fxml"));
-                Stage secondStage = new Stage();
-                Scene secondScene = new Scene(secondWindow, 520, 340);
 
-                secondStage.setTitle("выберите предмет");
-                secondStage.setScene(secondScene);
-                secondStage.initModality(Modality.WINDOW_MODAL);
-                secondStage.initOwner(Window.getWindows().get(2));
-                secondStage.show();
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("settingsSubject.fxml"));
+
+                Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
+
+                stage.setTitle("настройки предметов");
+                stage.setScene(secondScene);
+
+
+                stage.show();
+
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+        });
+        buttonBack.setOnAction(actionEvent -> {
+            Stage stage = (Stage) buttonBack.getScene().getWindow();
+            try{
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("groupWindow.fxml"));
+
+                Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
+
+                stage.setTitle("выберите группу");
+                stage.setScene(secondScene);
+
+
+                stage.show();
+
 
             }
             catch (Exception e){
                 e.printStackTrace();
             }
         });
-        buttonBack.setOnAction(actionEvent -> {
-            Stage stage = (Stage) buttonBack.getScene().getWindow();
-            stage.close();
+
+        buttonNext.setOnAction(actionEvent -> {
+            Stage stage = (Stage) buttonNext.getScene().getWindow();
+            try{
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Attendance.fxml"));
+
+                Scene secondScene = new Scene(fxmlLoader.load(), 1050, 600);
+
+                stage.setTitle("таблица посещаемости");
+                stage.setScene(secondScene);
+
+
+                stage.show();
+
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         });
     }
     void boxReload(){
