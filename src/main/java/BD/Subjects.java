@@ -16,7 +16,7 @@ public class Subjects {
     {
 
 
-        String sql =  "CREATE TABLE if not exists subject('group_id' INT, 'subject' text);";
+        String sql =  "CREATE TABLE if not exists subject('group' text, 'subject' text);";
 
         stat = null;
         try {
@@ -29,14 +29,14 @@ public class Subjects {
         }
     }
 
-    public static void writeDB(String group_id, String lesson) throws SQLException, ClassNotFoundException{
-        System.out.println(group_id + " " + lesson);
-        String sql = "INSERT INTO subject('group_id', 'subject') VALUES(?, ?)";
+    public static void writeDB(String group, String lesson) throws SQLException, ClassNotFoundException{
+        System.out.println(group + " " + lesson);
+        String sql = "INSERT INTO subject('group', 'subject') VALUES(?, ?)";
 
         stat = null;
         try{
             stat = Facult.conn.prepareStatement(sql);
-            stat.setString(1, group_id);
+            stat.setString(1, group);
             stat.setString(2, lesson);
             stat.execute();
             System.out.println("добавленно");
@@ -50,8 +50,8 @@ public class Subjects {
 
 
 
-    public static ObservableList<String> outputDB(String group_id) {
-        String sql = "select * from subject where [group_id]="+group_id;
+    public static ObservableList<String> outputDB(String group) {
+        String sql = "select * from subject where [group]='"+group+"'";
         stat = null;
         ObservableList<String> list = FXCollections.observableArrayList();
         try {
@@ -67,13 +67,23 @@ public class Subjects {
 
     }
 
-    public static void updateDBWhere(String group_id, String subject, String set){
-        String sql = "UPDATE subject set [subject]='"+set+"' WHERE [group_id]="+group_id+" and [subject]='"+subject+"'";
+    public static void updateDBWhere(String group, String subject, String set){
+        String sql = "UPDATE subject set [subject]='"+set+"' WHERE [group]='"+group+"' and [subject]='"+subject+"'";
         stat = null;
         try {
             stat = Facult.conn.prepareStatement(sql);
             stat.executeUpdate();
         }
         catch (SQLException e){e.printStackTrace();}
+    }
+
+    public static void clearWhere(String group){
+        String sql = "DELETE FROM subject WHERE [group]='"+group+"'";
+        stat = null;
+        try {
+            stat = Facult.conn.prepareStatement(sql);
+            stat.executeUpdate();
+        }
+        catch (SQLException e) {e.printStackTrace();}
     }
 }

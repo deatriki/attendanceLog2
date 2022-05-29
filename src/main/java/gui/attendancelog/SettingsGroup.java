@@ -52,9 +52,13 @@ public class SettingsGroup {
     void initialize() {
         boxReload();
         buttonClear.setOnAction(actionEvent -> {
-            Facult.clear("groups");
-            Group.createDB();
-            labelException.setText("все группы удалены");
+            try {
+                Group.clearWhere(ChosenId.getFacult_id(), ChosenId.getCourse_id());
+                labelException.setText("все группы удалены");
+            }
+            catch (Exception e){
+                labelException.setText("ошибка");
+            }
             boxReload();
         });
 

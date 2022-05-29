@@ -17,6 +17,24 @@ public class ChosenId {
         ChosenId.course_id = course_id;
     }
 
+    public static String getStudent_id() {
+        return student_id;
+    }
+
+    public static void setStudent_id(String student_id) {
+        ChosenId.student_id = student_id;
+    }
+
+    public static String getSubject() {
+        return subject;
+    }
+
+    public static void setSubject(String subject) {
+        ChosenId.subject = subject;
+    }
+
+    private static String subject = "";
+    private static String student_id = "";
     private static String facult_id = "";
     private static String course_id = "";
 

@@ -50,7 +50,7 @@ public class Group{
         catch (SQLException e){e.printStackTrace();}
     }
 
-    public static void writeDB(String facult_id,String course_id, String group) throws SQLException, ClassNotFoundException{
+    public static void writeDB(String facult_id,String course_id, String group){
         System.out.println(facult_id + " " + course_id +  " "  + group);
         String sql = "INSERT INTO groups(facult_id, course_id, 'group', 'group_num') VALUES(?, ?, ?, ?)";
         String group_id = course_id;
@@ -82,7 +82,7 @@ public class Group{
 
 
     public static ObservableList<String> outputDB(String name, String facult_id, String course_id) {
-        String sql = "select * from " + name + " where [facult_id]= "+facult_id+" and [course_id]="+ course_id + " order by [group], [group_num]";
+        String sql = "select * from " + name + " where [facult_id]="+facult_id+" and [course_id]="+ course_id + " order by [group], [group_num]";
         stat = null;
         ObservableList<String> list = FXCollections.observableArrayList();
         try {
@@ -102,7 +102,15 @@ public class Group{
 
     }
 
-
+    public static void clearWhere(String facult_id, String course_id){
+        String sql = "DELETE FROM groups WHERE [facult_id]="+facult_id+" and [course_id]="+course_id;
+        stat = null;
+        try {
+            stat = Facult.conn.prepareStatement(sql);
+            stat.executeUpdate();
+        }
+        catch (SQLException e) {e.printStackTrace();}
+    }
 
 
 }

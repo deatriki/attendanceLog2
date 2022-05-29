@@ -53,9 +53,10 @@ public class SettingsSubject {
     void initialize() {
         boxReload();
         buttonClear.setOnAction(actionEvent -> {
-            Facult.clear("subject");
-            Subjects.createDB();
+
+            Subjects.clearWhere(ChosenId.getGroup());
             labelException.setText("все предметы удалены");
+
             boxReload();
         });
 

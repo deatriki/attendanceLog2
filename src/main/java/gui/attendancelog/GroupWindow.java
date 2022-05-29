@@ -83,7 +83,8 @@ public class GroupWindow {
         buttonNext.setOnAction(actionEvent -> {
             if(comboBox.getValue()!= null){
                 String[] groupNameAndNum = comboBox.getValue().split("-");
-                ChosenId.setGroup(ChosenId.getCourse_id()+ChosenId.getCourse_id()+groupNameAndNum[1]);
+                ChosenId.setGroup(groupNameAndNum[0]+groupNameAndNum[1]+ChosenId.getFacult_id());
+                System.out.println(ChosenId.getGroup());
                 Stage stage = (Stage) buttonNext.getScene().getWindow();
                 try{
 
@@ -91,7 +92,7 @@ public class GroupWindow {
 
                     Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
 
-                    stage.setTitle("выберите группу");
+                    stage.setTitle("выберите предмет");
                     stage.setScene(secondScene);
 
 

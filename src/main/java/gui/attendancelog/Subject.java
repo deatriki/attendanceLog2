@@ -83,23 +83,26 @@ public class Subject {
         });
 
         buttonNext.setOnAction(actionEvent -> {
-            Stage stage = (Stage) buttonNext.getScene().getWindow();
-            try{
+            if(comboBox.getValue()!= null){
+                ChosenId.setSubject(comboBox.getValue());
+                Stage stage = (Stage) buttonNext.getScene().getWindow();
+                try{
 
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Attendance.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Attendance.fxml"));
 
-                Scene secondScene = new Scene(fxmlLoader.load(), 1050, 600);
+                    Scene secondScene = new Scene(fxmlLoader.load(), 1050, 600);
 
-                stage.setTitle("таблица посещаемости");
-                stage.setScene(secondScene);
-
-
-                stage.show();
+                    stage.setTitle("таблица посещаемости");
+                    stage.setScene(secondScene);
 
 
-            }
-            catch (Exception e){
-                e.printStackTrace();
+                    stage.show();
+
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
     }
