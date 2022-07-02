@@ -54,10 +54,10 @@ public class SettingsGroup {
         buttonClear.setOnAction(actionEvent -> {
             try {
                 Group.clearWhere(ChosenId.getFacult_id(), ChosenId.getCourse_id());
-                labelException.setText("все группы удалены");
+                labelException.setText("all groups removed");
             }
             catch (Exception e){
-                labelException.setText("ошибка");
+                labelException.setText("error");
             }
             boxReload();
         });
@@ -68,7 +68,9 @@ public class SettingsGroup {
                     try {
                         Group.writeDB(ChosenId.getFacult_id(), ChosenId.getCourse_id(), textField.getText());
                         textField.setText("");
-                        labelException.setText("группа\nуспешно\nдобавлена");
+                        labelException.setText("Group\n" +
+                                "successfully\n" +
+                                "added");
                         boxReload();
                     }
                     catch (Exception e){e.printStackTrace();}
@@ -79,7 +81,7 @@ public class SettingsGroup {
                     String[] groupAndID = box.getValue().split("-");
                     Group.updateDBWhere(ChosenId.getFacult_id(), ChosenId.getCourse_id(), groupAndID[0], groupAndID[1], textField.getText());
 
-                    labelException.setText("группа:\n"+ box.getValue()+"\nзаменена на:\n"+textField.getText());
+                    labelException.setText("Group:\n"+ box.getValue()+"\nreplaced with:\n"+textField.getText());
                     textField.setText("");
                     boxReload();
                 }
@@ -87,12 +89,12 @@ public class SettingsGroup {
         });
 
         box.setOnAction(actionEvent -> {
-            buttonAdd.setText("заменить");
+            buttonAdd.setText("replace");
         });
 
         buttonUndo.setOnAction(actionEvent -> {
             boxReload();
-            buttonAdd.setText("добавить");
+            buttonAdd.setText("add");
         });
         buttonBackPage.setOnAction(actionEvent -> {
 
@@ -103,7 +105,7 @@ public class SettingsGroup {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
 
-                stage.setTitle("выберите группу");
+                stage.setTitle("select a group");
                 stage.setScene(secondScene);
 
 

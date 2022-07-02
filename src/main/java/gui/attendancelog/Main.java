@@ -15,8 +15,8 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 520, 340);
-
-        stage.setTitle("окошко (:");
+        stage.setResizable(false);
+        stage.setTitle("attendance log v2");
         stage.setScene(scene);
         stage.show();
     }

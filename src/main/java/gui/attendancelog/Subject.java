@@ -48,7 +48,7 @@ public class Subject {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
 
-                stage.setTitle("настройки предметов");
+                stage.setTitle("subject settings");
                 stage.setScene(secondScene);
 
 
@@ -69,7 +69,7 @@ public class Subject {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
 
-                stage.setTitle("выберите группу");
+                stage.setTitle("select a group");
                 stage.setScene(secondScene);
 
 
@@ -92,7 +92,7 @@ public class Subject {
 
                     Scene secondScene = new Scene(fxmlLoader.load(), 1050, 600);
 
-                    stage.setTitle("таблица посещаемости");
+                    stage.setTitle("attendance table");
                     stage.setScene(secondScene);
 
 

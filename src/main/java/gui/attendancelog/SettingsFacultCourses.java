@@ -53,9 +53,9 @@ public class SettingsFacultCourses {
 
     @FXML
     void initialize() {
-        labelException.setText("1.Для добавления\nфакультета введите \nв поле название\nи нажмите 'добавить'\n2.Для замены\nвыберите факультет\nи нажмите 'заменить'" +
-                "\n3.Для удаления всех\nфакультетов \nнажмите 'очистить'" +
-                "\n4.Для введения кол-во\nкурсов введите в\nполе рядом с \nкнопкой 'ок'\nколичество курсов\nи нажмите на кнопку");
+        labelException.setText("1.To add\nfaculty, enter \nin the name field\nand click 'add'\n2. To replace\nselect the faculty\nand click 'replace'\n" +
+                "                 \n3. To remove all\nfaculties \nclick 'clear' \n" +
+                "                 \n4. To enter the number of\ncourses, enter in the\nfield next to the \nok button\nthe number of courses\nand press the button");
 
         buttonClearFacult.setOnAction(actionEvent -> {
             Facult.clear("facult");
@@ -65,7 +65,7 @@ public class SettingsFacultCourses {
 
         boxFacult.getItems().addAll(Facult.outputDB("facult"));
         boxFacult.setOnAction(actionEvent -> {
-            buttonAddFacult.setText("заменить");
+            buttonAddFacult.setText("replace");
         });
 
         buttonAddFacult.setOnAction(actionEvent -> {
@@ -74,14 +74,16 @@ public class SettingsFacultCourses {
                     try {
                         Facult.writeDB(textFieldFacult.getText());
                         textFieldFacult.setText("");
-                        labelException.setText("факультет\nуспешно\nдобавлен");
+                        labelException.setText("faculty\n" +
+                                "successfully\n" +
+                                "added");
                     }catch (Exception e){e.printStackTrace();}
                 }
             }
             else{
                 if(textFieldFacult.getText() != "") {
                     Facult.updateBDWhere(boxFacult.getValue(), textFieldFacult.getText());
-                    labelException.setText("факультет:\n"+ boxFacult.getValue()+"\nзаменен на:\n"+textFieldFacult.getText());
+                    labelException.setText("faculty:\n"+ boxFacult.getValue()+"\nreplaced with:\n"+textFieldFacult.getText());
                     textFieldFacult.setText("");
                 }
             }
@@ -90,7 +92,7 @@ public class SettingsFacultCourses {
 
         buttonUndo.setOnAction(actionEvent -> {
             boxReload();
-            buttonAddFacult.setText("добавить");
+            buttonAddFacult.setText("add");
         });
 
         buttonCoursesOk.setOnAction(actionEvent -> {
@@ -100,7 +102,8 @@ public class SettingsFacultCourses {
                         Facult.clear("course");
                         Course.createDB();
                         Course.writeDB(textFieldCourses.getText());
-                        labelException.setText("успешно добав-\nлены\nкурсы от 1 до "+textFieldCourses.getText());
+                        labelException.setText("successfully added\n" +
+                                "courses from 1 to "+textFieldCourses.getText());
                         textFieldCourses.setText("");
                     }
                     catch (Exception e){
@@ -108,7 +111,8 @@ public class SettingsFacultCourses {
                     }
                 }
                 else{
-                    labelException.setText("введите число\nбольше 0");
+                    labelException.setText("enter a number\n" +
+                            "more than 0");
                 }
             }
         });
@@ -120,7 +124,7 @@ public class SettingsFacultCourses {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
 
-                stage.setTitle("выберите группу");
+                stage.setTitle("attendance log v2");
                 stage.setScene(secondScene);
 
 

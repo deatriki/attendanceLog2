@@ -52,7 +52,7 @@ public class SettingsAttendanceController {
         buttonClear.setOnAction(actionEvent -> {
 
             Attendance.clearWhere(ChosenId.getGroup());
-            labelException.setText("все студенты удалены");
+            labelException.setText("all students removed");
             boxReload();
         });
 
@@ -97,7 +97,9 @@ public class SettingsAttendanceController {
                             Attendance.writeDB(textField.getText(), ChosenId.getGroup(), ChosenId.getSubject(), "December", Integer.toString(i));
                         }
                         textField.setText("");
-                        labelException.setText("студент\nуспешно\nдобавлен");
+                        labelException.setText("student\n" +
+                                "successfully\n" +
+                                "added");
                         boxReload();
                     }
                     catch (Exception e){e.printStackTrace();}
@@ -108,7 +110,7 @@ public class SettingsAttendanceController {
 
                     Attendance.updateDBWhere(box.getValue(), ChosenId.getSubject(), ChosenId.getGroup(), textField.getText());
 
-                    labelException.setText("студент:\n"+ box.getValue()+"\nзаменена на:\n"+textField.getText());
+                    labelException.setText("student:\n"+ box.getValue()+"\nreplaced with:\n"+textField.getText());
                     textField.setText("");
                     boxReload();
                 }
@@ -116,12 +118,12 @@ public class SettingsAttendanceController {
         });
 
         box.setOnAction(actionEvent -> {
-            buttonAdd.setText("заменить");
+            buttonAdd.setText("replace");
         });
 
         buttonUndo.setOnAction(actionEvent -> {
             boxReload();
-            buttonAdd.setText("добавить");
+            buttonAdd.setText("add");
         });
 
         buttonBackPage.setOnAction(actionEvent -> {
@@ -132,7 +134,7 @@ public class SettingsAttendanceController {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 1050, 600);
 
-                stage.setTitle("таблица посещаемости");
+                stage.setTitle("attendance table");
                 stage.setScene(secondScene);
 
 

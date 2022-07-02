@@ -8,13 +8,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+
 
 public class GroupWindow {
 
@@ -47,7 +45,7 @@ public class GroupWindow {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
 
-                stage.setTitle("настройки факультета и курсов");
+                stage.setTitle("faculty and course settings");
                 stage.setScene(secondScene);
 
 
@@ -68,7 +66,7 @@ public class GroupWindow {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
 
-                stage.setTitle("выберите группу");
+                stage.setTitle("attendance log v2");
                 stage.setScene(secondScene);
 
 
@@ -92,7 +90,7 @@ public class GroupWindow {
 
                     Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
 
-                    stage.setTitle("выберите предмет");
+                    stage.setTitle("select subject");
                     stage.setScene(secondScene);
 
 

@@ -55,7 +55,7 @@ public class SettingsSubject {
         buttonClear.setOnAction(actionEvent -> {
 
             Subjects.clearWhere(ChosenId.getGroup());
-            labelException.setText("все предметы удалены");
+            labelException.setText("all subject removed");
 
             boxReload();
         });
@@ -66,7 +66,9 @@ public class SettingsSubject {
                     try {
                         Subjects.writeDB(ChosenId.getGroup(), textField.getText());
                         textField.setText("");
-                        labelException.setText("предмет\nуспешно\nдобавлен");
+                        labelException.setText("subject\n" +
+                                "successfully\n" +
+                                "added");
                         boxReload();
                     }
                     catch (Exception e){e.printStackTrace();}
@@ -77,7 +79,7 @@ public class SettingsSubject {
 
                     Subjects.updateDBWhere(ChosenId.getGroup(), box.getValue(), textField.getText());
 
-                    labelException.setText("предмет:\n"+ box.getValue()+"\nзаменена на:\n"+textField.getText());
+                    labelException.setText("subject:\n"+ box.getValue()+"\nreplaced with:\n"+textField.getText());
                     textField.setText("");
                     boxReload();
                 }
@@ -85,12 +87,12 @@ public class SettingsSubject {
         });
 
         box.setOnAction(actionEvent -> {
-            buttonAdd.setText("заменить");
+            buttonAdd.setText("replace");
         });
 
         buttonUndo.setOnAction(actionEvent -> {
             boxReload();
-            buttonAdd.setText("добавить");
+            buttonAdd.setText("add");
         });
         buttonBackPage.setOnAction(actionEvent -> {
 
@@ -101,7 +103,7 @@ public class SettingsSubject {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
 
-                stage.setTitle("выберите группу");
+                stage.setTitle("select subject");
                 stage.setScene(secondScene);
 
 

@@ -319,7 +319,7 @@ public class AttendanceController {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 520, 340);
 
-                stage.setTitle("настройки студентов");
+                stage.setTitle("student settings");
                 stage.setScene(secondScene);
 
 
@@ -339,7 +339,7 @@ public class AttendanceController {
 
                 Scene secondScene = new Scene(fxmlLoader.load(), 260, 200);
 
-                stage.setTitle("выберите группу");
+                stage.setTitle("select subject");
                 stage.setScene(secondScene);
 
 

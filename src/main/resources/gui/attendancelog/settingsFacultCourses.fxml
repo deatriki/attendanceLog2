@@ -10,12 +10,12 @@
    <children>
       <TextField fx:id="textFieldFacult" layoutX="182.0" layoutY="14.0" prefHeight="25.0" prefWidth="210.0" />
       <TextField fx:id="textFieldCourses" layoutX="182.0" layoutY="102.0" prefHeight="25.0" prefWidth="28.0" />
-      <Button fx:id="buttonCoursesOk" layoutX="210.0" layoutY="102.0" mnemonicParsing="false" text="ок" />
+      <Button fx:id="buttonCoursesOk" layoutX="210.0" layoutY="102.0" mnemonicParsing="false" text="ok" />
       <Label fx:id="labelException" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="392.0" prefHeight="340.0" prefWidth="127.0" style="-fx-background-color: #9C9C9C;" />
       <Button fx:id="buttonBackPage" layoutX="301.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="back" />
       <ComboBox fx:id="boxFacult" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="168.0" />
-      <Button fx:id="buttonAddFacult" layoutX="322.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="добавить" />
-      <Button fx:id="buttonUndo" layoutX="182.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="отмена" />
-      <Button fx:id="buttonClearFacult" layoutX="252.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="очистить" />
+      <Button fx:id="buttonAddFacult" layoutX="322.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="add" />
+      <Button fx:id="buttonUndo" layoutX="182.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="cancel" />
+      <Button fx:id="buttonClearFacult" layoutX="252.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="clear" />
    </children>
 </AnchorPane>
