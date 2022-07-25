@@ -1,7 +1,5 @@
 package BD;
 
-import gui.attendancelog.EndTable;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

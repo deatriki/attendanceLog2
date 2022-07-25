@@ -10,6 +10,10 @@ module gui.attendancelog {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens gui.attendancelog to javafx.fxml;
-    exports gui.attendancelog;
+    opens gui to javafx.fxml;
+    exports gui;
+    exports gui.settings;
+    opens gui.settings to javafx.fxml;
+    exports gui.windows;
+    opens gui.windows to javafx.fxml;
 }

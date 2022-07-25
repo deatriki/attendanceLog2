@@ -1,16 +1,15 @@
-package gui.attendancelog;
+package gui.windows;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import BD.Attendance;
 import BD.Month;
-import BD.Students;
-import BD.Subjects;
+import gui.ChosenId;
+import gui.EndTable;
+import gui.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -23,7 +22,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AttendanceController {

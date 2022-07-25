@@ -1,4 +1,4 @@
-package gui.attendancelog;
+package gui;
 
 public class EndTable {
     private String student;

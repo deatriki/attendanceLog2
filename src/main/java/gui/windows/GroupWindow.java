@@ -1,9 +1,11 @@
-package gui.attendancelog;
+package gui.windows;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import BD.Group;
+import gui.ChosenId;
+import gui.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

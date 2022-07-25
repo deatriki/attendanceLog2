@@ -1,10 +1,11 @@
-package gui.attendancelog;
+package gui.settings;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import BD.Course;
 import BD.Facult;
+import gui.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

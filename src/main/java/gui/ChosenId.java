@@ -1,4 +1,4 @@
-package gui.attendancelog;
+package gui;
 
 public class ChosenId {
     public static String getFacult_id() {

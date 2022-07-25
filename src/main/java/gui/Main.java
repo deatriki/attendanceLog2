@@ -1,4 +1,4 @@
-package gui.attendancelog;
+package gui;
 
 import BD.*;
 import javafx.application.Application;

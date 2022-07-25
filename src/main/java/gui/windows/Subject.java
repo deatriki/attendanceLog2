@@ -1,20 +1,19 @@
-package gui.attendancelog;
+package gui.windows;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import BD.Subjects;
+import gui.ChosenId;
+import gui.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class Subject {
 
